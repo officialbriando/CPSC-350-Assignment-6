@@ -92,7 +92,7 @@ int main(int argc, char ** argv)
 
 	cout << "Algorithm: ShellSort" << endl;
 	startTime = clock();
-	sortAlgos.QuickSort(myArray3, length);
+	sortAlgos.ShellSort(myArray3, length);
 	endTime = clock();
 
 	cout << "Start time: " << startTime << endl
