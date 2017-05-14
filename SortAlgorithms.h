@@ -50,7 +50,6 @@ void SortAlgorithms<E>::QuickSort(E* myArray, int lo, int hi)
 	int i = lo, j = hi;
 	E temp;
 	int pivot = myArray[(lo + (hi - lo)) / 2]; //Takes the middle index of the array as the pivot.
-	cout << "test 1" << endl;
 	while(i <= j)
 	{
 		while(myArray[i] < pivot && i < hi)
@@ -73,9 +72,7 @@ void SortAlgorithms<E>::QuickSort(E* myArray, int lo, int hi)
 		else
 		{
 			if(j > lo) QuickSort(myArray, lo, j);	//Recursively calls quick sort until the positional
-			cout << "test 3" << endl;
 			if(i < hi) QuickSort(myArray, i, hi);	//indices reach the ends of the array.
-			cout << "test 4" << endl;
 		}
 
 		//Stops once the indices pass the pivot.
@@ -85,13 +82,15 @@ void SortAlgorithms<E>::QuickSort(E* myArray, int lo, int hi)
 template<class E>
 void SortAlgorithms<E>::ShellSort(E* myArray, int length)
 {
-	for(int g = length/2; g > 0; g /= 2)	//Narrowing the array by 2 per iteration.
+	int j;
+
+	for(int g = length/2; g > 0; g /= 2)	//Narrowing the array by half per iteration.
 	{
 		for(int i = g; i < length; ++i)
 		{
 			E temp = myArray[i];
-			int j;
-			for(j = i; j >= g && temp < myArray[j - g]; j -= temp)	//Compares elements which are the gap distance apart.
+
+			for(j = i; j >= g && temp < myArray[j - g]; j -= g)	//Compares elements which are the gap distance apart.
 			{
 				myArray[j] = myArray[j - g];
 			}
