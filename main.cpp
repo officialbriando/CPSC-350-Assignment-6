@@ -46,12 +46,12 @@ int main(int argc, char ** argv)
 		myArray[index++] = placeholder;		
 	}
 
-	cout << "Doubles in file: " << endl;
+	/*cout << "Doubles in file: " << endl << endl;
 	for(int i = 0; i < length; ++i)
 	{
 		cout << myArray[i] << " ";
 	}
-	cout << endl;
+	cout << endl;*/
 
 
 	//Copies array into two more for sorting purposes.
