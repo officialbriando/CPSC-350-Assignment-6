@@ -10,9 +10,9 @@ class SortAlgorithms
 		SortAlgorithms();
 		~SortAlgorithms();
 
-		void InsertionSort(E* &myArray, int length);
-		void QuickSort(E* &myArray, int lo, int hi);
-		void ShellSort(E* &myArray, int length);
+		void InsertionSort(E* myArray, int length);
+		void QuickSort(E* myArray, int lo, int hi);
+		void ShellSort(E* myArray, int length);
 };
 
 template<class E>
@@ -28,7 +28,7 @@ SortAlgorithms<E>::~SortAlgorithms()
 }
 
 template<class E>
-void SortAlgorithms<E>::InsertionSort(E* &myArray, int length)
+void SortAlgorithms<E>::InsertionSort(E* myArray, int length)
 {
 	for(int i = 0; i < length; ++i)
 	{
@@ -44,18 +44,23 @@ void SortAlgorithms<E>::InsertionSort(E* &myArray, int length)
 }
 
 template<class E>
-void SortAlgorithms<E>::QuickSort(E* &myArray, int lo, int hi)
+void SortAlgorithms<E>::QuickSort(E* myArray, int lo, int hi)
 {
 	//Partitioning the array.
-
 	int i = lo, j = hi;
 	E temp;
-	int pivot = myArray[(lo + hi) / 2]; //Takes the middle index of the array as the pivot.
-
+	int pivot = myArray[(lo + (hi - lo)) / 2]; //Takes the middle index of the array as the pivot.
+	cout << "test 1" << endl;
 	while(i <= j)
 	{
-		while(myArray[i] < pivot) i++;	//Keeps finding a value greater than the pivot on left side.
-		while(myArray[j] > pivot) j--;	//Keeps finding a value less than the pivot on right side.
+		while(myArray[i] < pivot && i < hi)
+		{
+			i++;	//Keeps finding a value greater than the pivot on left side.
+		} 
+		while(myArray[j] >= pivot && j > lo)
+		{
+			j--;	//Keeps finding a value less than the pivot on right side.
+		} 
 
 		if(i <= j)
 		{
@@ -63,25 +68,30 @@ void SortAlgorithms<E>::QuickSort(E* &myArray, int lo, int hi)
 			myArray[i] = myArray[j];
 			myArray[j] = temp;
 
-			i++, j++;
+			i++, j--;
+		}
+		else
+		{
+			if(j > lo) QuickSort(myArray, lo, j);	//Recursively calls quick sort until the positional
+			cout << "test 3" << endl;
+			if(i < hi) QuickSort(myArray, i, hi);	//indices reach the ends of the array.
+			cout << "test 4" << endl;
 		}
 
 		//Stops once the indices pass the pivot.
 	}
-
-	if(j > lo) QuickSort(myArray, lo, j);	//Recursively calls quick sort until the positional
-	if(i < hi) QuickSort(myArray, i, hi);	//indices reach the ends of the array.
 }
 
 template<class E>
-void SortAlgorithms<E>::ShellSort(E* &myArray, int length)
+void SortAlgorithms<E>::ShellSort(E* myArray, int length)
 {
 	for(int g = length/2; g > 0; g /= 2)	//Narrowing the array by 2 per iteration.
 	{
-		for(int i = g; i < size; ++i)
+		for(int i = g; i < length; ++i)
 		{
 			E temp = myArray[i];
-			for(int j = i; j >= g && temp < myArray[j - g]; j -= temp)	//Compares elements which are the gap distance apart.
+			int j;
+			for(j = i; j >= g && temp < myArray[j - g]; j -= temp)	//Compares elements which are the gap distance apart.
 			{
 				myArray[j] = myArray[j - g];
 			}
