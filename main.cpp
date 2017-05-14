@@ -73,8 +73,8 @@ int main(int argc, char ** argv)
 	sortAlgos.InsertionSort(myArray, length);
 	clock_t endTime = clock();
 
-	cout << "Start time: " << startTime << endl
-		<< "End time: " << endTime << endl
+	cout << "Start time: " << startTime/(double)CLOCKS_PER_SEC << endl
+		<< "End time: " << endTime/(double)CLOCKS_PER_SEC << endl
 		<< "Time in seconds: " << ((endTime - startTime)/(double)CLOCKS_PER_SEC) << endl << endl;
 
 
@@ -84,8 +84,8 @@ int main(int argc, char ** argv)
 	sortAlgos.QuickSort(myArray2, 0, length - 1);
 	endTime = clock();
 
-	cout << "Start time: " << startTime << endl
-		<< "End time: " << endTime << endl
+	cout << "Start time: " << startTime/(double)CLOCKS_PER_SEC << endl
+		<< "End time: " << endTime/(double)CLOCKS_PER_SEC << endl
 		<< "Time in seconds: " << ((endTime - startTime)/(double)CLOCKS_PER_SEC) << endl << endl;
 
 	
@@ -95,8 +95,8 @@ int main(int argc, char ** argv)
 	sortAlgos.ShellSort(myArray3, length);
 	endTime = clock();
 
-	cout << "Start time: " << startTime << endl
-		<< "End time: " << endTime << endl
+	cout << "Start time: " << startTime/(double)CLOCKS_PER_SEC << endl
+		<< "End time: " << endTime/(double)CLOCKS_PER_SEC << endl
 		<< "Time in seconds: " << ((endTime - startTime)/(double)CLOCKS_PER_SEC) << endl << endl;
 
 	return 0;
