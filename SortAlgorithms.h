@@ -48,7 +48,8 @@ void SortAlgorithms<E>::QuickSort(E* &myArray, int lo, int hi)
 {
 	//Partitioning the array.
 
-	int i = lo, j = hi, temp;
+	int i = lo, j = hi;
+	E temp;
 	int pivot = myArray[(lo + hi) / 2]; //Takes the middle index of the array as the pivot.
 
 	while(i <= j)
@@ -79,7 +80,7 @@ void SortAlgorithms<E>::ShellSort(E* &myArray, int length)
 	{
 		for(int i = g; i < size; ++i)
 		{
-			int temp = myArray[i];
+			E temp = myArray[i];
 			for(int j = i; j >= g && temp < myArray[j - g]; j -= temp)	//Compares elements which are the gap distance apart.
 			{
 				myArray[j] = myArray[j - g];
