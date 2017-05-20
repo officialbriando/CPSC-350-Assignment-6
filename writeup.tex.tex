@@ -1,0 +1,24 @@
+
+\documentclass[journal]{IEEEtran}
+\usepackage{blindtext}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+\title{CPSC 350 Assignment 6: Sorting Algorithms}
+
+\author{Brian Do}
+
+\maketitle
+
+\section{Introduction}
+    Researching and coding the algorithms themselves was not anything close to a task as complex as the other assignments we had been given before. Many of the data structures we have been learning require from the user both a breadth and a depth of knowledge about how each class, part, and even line of code connect together before being able to make any real progress in implementing the data structure practically. Sorting algorithms only require research on the method that the sorting algorithm uses in order to arrange the input data, as well as a mathematical analysis to determine the Big O run time.
+
+\subsection{Time differences, trade-offs, and more}
+    The time differences took a rather large input size to become more apparent; 120,000 doubles were used as the input size before noticeable time differences came up. However, the differences were about as widely distributed as I imagined; the insertion sort (with a Big O of n-squared) took 15 seconds to finish running while the recursive Quick Sort took less than a full hundredth of a second in order to complete. A 15x differential is more than significant and drives a very strong point about the wide variance in sorting algorithms. Some trade offs included in picking one algorithm over the other (such as Merge Sorting) is the very inefficient allotment of memory, constantly creating new sub-arrays and re-merging them into one (unless the code accounts for static memory consumption). For example, the recursive Quick Sort algorithm partitions within the array itself and does not make more sub-arrays. Doing the sorting algorithm in C++ also meant that memory allocation is controlled by the code/user itself, as opposed to other languages which will take care of it automatically when memory isn't being utilized. Some shortcomings of this empirical analysis are the lengthy amount of time it takes to run through the slower algorithms, as well as the slow down of the environment the analysis is being run in. When doing insertion sort, the computer noticeably started slowing down due to the higher use of memory and disk space. 
+
+\section{Conclusion}
+    The study and comparison of different sorting algorithms is a practical and very straight forward approach to seeing the differences between the different Big O run times and how they translate into empirical analysis. It proves that 1) mathematical analysis is a reasonable way to determine run time and 2) the disadvantages of doing empirical analysis still hold true to some extent even with processing and memory capacities many times larger than there used to exist altogether.
+
+\end{document}
